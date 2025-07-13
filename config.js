@@ -1,0 +1,184 @@
+import {
+    @ButtonProperty,@CheckboxProperty,
+    Color,
+    @ColorProperty,
+    @PercentSliderProperty,
+    @SelectorProperty,
+    @SwitchProperty,
+    @TextProperty,
+    @Vigilant,
+    @SliderProperty,
+    @NumberProperty,
+} from '../Vigilance/index';
+
+@Vigilant("vexo", "§4vexo",  {
+    getCategoryComparator: () => (a, b) => {
+        const categories = ['Dungeon-QOL', 'M7/F7', 'QOL', 'Dev'];
+        return categories.indexOf(a.name) - categories.indexOf(b.name);
+    }
+})
+
+class Settings {
+    ffrzGUI = new Gui()
+    padTimerGUI = new Gui()
+
+    ///////////////////////////////////////////////
+    // tera ///////////////////////////////////////
+    ///////////////////////////////////////////////
+
+    @SwitchProperty({
+        name: "Refill Boom",
+        description: "Refills Superboom-TNT at the biginning of a dungeon (normal boom = shorter cd)",
+        category: "Dungeon-QOL",
+        subcategory: "Refill"
+    })
+    sbtnt = false;
+
+    @SwitchProperty({
+        name: "M3 Timer",
+        description: "Displays the Fire freeze timer on the screen",
+        category: "Dungeon-QOL",
+        subcategory: "Timers"
+    })
+    ffrz = false;
+
+    @ButtonProperty({
+        name: "Move M3 Timer GUI",
+        description: "Scroll to change scale, middle click to reset",
+        category: "Dungeon-QOL",
+        subcategory: "Timers",
+        placeholder: "Move"
+    })
+    MoveffrzGUI() {
+        this.ffrzGUI.open()
+    };
+
+    @SwitchProperty({
+        name: "Pad Timer",
+        description: "Displays the Pad Timer on the screen",
+        category: "M7/F7",
+        subcategory: "Storm"
+    })
+    padTimer = false;
+
+    @ButtonProperty({
+        name: "Move Pad Timer GUI",
+        description: "Scroll to change scale, middle click to reset",
+        category: "M7/F7",
+        subcategory: "Storm",
+        placeholder: "Move",
+    })
+    MovepadTimer() {
+        this.padTimerGUI.open()
+    };
+    
+    @SwitchProperty({
+        name: "Rewarp",
+        description: "Warps u to is and back to is and back to the dwarven mines",
+        category: "QOL",
+        subcategory: "Rewarp"
+    })
+    rewarp = false;
+
+    @TextProperty({
+        name: "Rewarp to",
+        description: "The location you want to rewarp to, put the warp command without the /",
+        category: "QOL",
+        subcategory: "Rewarp",
+        placeholder: "warp mines"
+    })
+    rewarpto = "warp mines";
+
+    @SwitchProperty({
+        name: "Rewarp monolyth",
+        description: "rewarps after finding a monolyth",
+        category: "QOL",
+        subcategory: "Rewarp"
+    })
+    rewarpmonolyth = false;
+
+    @SwitchProperty({
+        name: "Rewarp on Coords",
+        description: "Not working Right Now",
+        category: "QOL",
+        subcategory: "Rewarp"
+    })
+    rewarpcoordstoggle = false;
+
+    @TextProperty({
+        name: "Rewarp Coords",
+        description: "Put the coords you want to rewarp to, format: x,y,z without spaces",
+        category: "QOL",
+        subcategory: "Rewarp",
+        placeholder: "0,0,0"
+    })
+    rewarpcoords = "0,0,0";
+
+    @SwitchProperty({
+        name: "Print Entitys",
+        description: "Prints all entities to chat for debugging purposes (will lag your game)",
+        category: "Dev",
+        subcategory: "Entity"
+    })
+    printEntity = false;
+
+    @SwitchProperty({
+        name: "Mob ESP",
+        description: "Highlights starred mobs with a box",
+        category: "Dev",
+        subcategory: "Entity"
+    })
+    StarESP = false;
+
+    @SwitchProperty({
+        name: "Render Sheeps",
+        description: "Stops rendering the Mage sheep",
+        category: "Dungeon-QOL",
+        subcategory: "Render"
+    })
+    SheepRender = false;
+    
+    @SwitchProperty({
+        name: "All Leaped",
+        description: "Alerts you when everyone is in P5",
+        category: "M7/F7",
+        subcategory: "M7 P5"
+    })
+    allLeaped = false;
+
+
+    @SwitchProperty({
+        name: "Rag Axe Alert",
+        description: "Tells you when to Rag Axe in P5",
+        category: "Dungeon-QOL",
+        subcategory: "Alerts"
+    })
+    RagAxeAlert = false;
+
+    @SwitchProperty({
+        name: "Auto Rejoin on Kick",
+        description: "Automatically notifies the party that you were kicked and rejoins in 65 seconds",
+        category: "QOL",
+        subcategory: "Kicked"
+    })
+    rejoin = false;
+    
+    //Constructor 
+
+    constructor() {
+        this.initialize(this);
+        this.setCategoryDescription("Dungeon-QOL", "&aMod Created by Traube_V2 and InfernoLloyd; #0 Dungeon Players \n Version 1.0.1 ");
+
+
+        // Add dependencies
+        this.addDependency("Rewarp Coords", "Rewarp");
+        this.addDependency("Rewarp Coords", "Rewarp on Coords");
+        this.addDependency("Rewarp on Coords", "Rewarp");
+        this.addDependency("Rewarp monolyth", "Rewarp");
+        this.addDependency("Rewarp to", "Rewarp");
+        this.addDependency("Move M3 Timer GUI", "M3 Timer");
+        this.addDependency("Move Pad Timer GUI", "Pad Timer");
+    }
+}
+
+export default new Settings()
