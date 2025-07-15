@@ -2,7 +2,7 @@ import config from "./config"
 
 import "./Features/vexo/Dungeon-QOL/ffrz"
 import "./Features/vexo/MF-7/m7padTimer"
-//import "./Features/vexo/Dungeon-QOL/sbTNT"
+import "./Features/vexo/Dungeon-QOL/sbTNT"
 import "./Features/vexo/Dev/printEntity"
 import "./Features/vexo/Dev/starredMobEsp"
 import "./Features/vexo/Dungeon-QOL/RagAxeNow"
