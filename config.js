@@ -131,12 +131,12 @@ class Settings {
     StarESP = false;
 
     @SwitchProperty({
-        name: "Render Sheeps",
-        description: "Stops rendering the Mage sheep",
+        name: "No Mage Sheep",
+        description: "Prevents Mage Sheep from rendering",
         category: "Dungeon-QOL",
         subcategory: "Render"
     })
-    SheepRender = false;
+    NoMageSheep = false;
     
     @SwitchProperty({
         name: "All Leaped",

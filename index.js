@@ -8,7 +8,7 @@ import "./Features/vexo/Dev/starredMobEsp"
 import "./Features/vexo/Dungeon-QOL/RagAxeNow"
 import "./Features/vexo/MF-7/allLeapedP5"
 import "./Features/vexo/QOL/rejoin"
-//import "./Features/vexo/Dungeon-QOL/RenderSheep
+import "./Features/vexo/Dungeon-QOL/StopMageSheepRendering"
 
 //vexo
 import { GUICommand } from "./Features/gui"

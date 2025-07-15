@@ -1,5 +1,10 @@
 export const prefix_vexo = "§3[vexo]"
 
+export function isInDungeon() {
+    try {
+        return TabList?.getNames()?.some(a => a.removeFormatting() == 'Dungeon: Catacombs')
+    } catch (e) { }
+}
 
 export const playercoords = () => {
     x = Player.getX()
