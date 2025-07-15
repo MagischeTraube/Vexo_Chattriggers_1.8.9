@@ -1,7 +1,8 @@
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
-import { prefix_infa } from "../../../utils/util"
+import { prefix_vexo } from "../../../utils/util"
 
 let setTyfr = false;
+
 const triggers =[
     "Score:",
     "Tokens Earned:"
@@ -10,10 +11,10 @@ const triggers =[
 
 export const TYFRCommand = register("command", () => {
     if (!setTyfr) {
-        ChatLib.chat(`${prefix_infa} §aTYFR activated! – waiting for the end of the run`);  
+        ChatLib.chat(`${prefix_vexo} §aTYFR activated! – waiting for the end of the run`);  
     }
     else {
-        ChatLib.chat(`${prefix_infa} §4TYFR deactivated!`); 
+        ChatLib.chat(`${prefix_vexo} §4TYFR deactivated!`); 
     }
     
     setTyfr = !setTyfr;
