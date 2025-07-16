@@ -1,5 +1,3 @@
-ChatLib.chat("test")
-
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
 import { prefix_vexo } from "../../../utils/util"
 
