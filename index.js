@@ -1,12 +1,12 @@
 import config from "./config"
 
 import "./Features/vexo/Dungeon-QOL/ffrz"
-import "./Features/vexo/MF-7/m7padTimer"
+import "./Features/vexo/Dungeon-QOL/m7padTimer"
 import "./Features/vexo/Dungeon-QOL/sbTNT"
 import "./Features/vexo/Dev/printEntity"
 import "./Features/vexo/Dev/starredMobEsp"
 import "./Features/vexo/Dungeon-QOL/RagAxeNow"
-import "./Features/vexo/MF-7/allLeapedP5"
+import "./Features/vexo/Dungeon-QOL/allLeapedP5"
 import "./Features/vexo/QOL/rejoin"
 import "./Features/vexo/Dungeon-QOL/StopMageSheepRendering"
 

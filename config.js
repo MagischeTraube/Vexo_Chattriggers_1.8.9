@@ -56,7 +56,7 @@ class Settings {
     @SwitchProperty({
         name: "Pad Timer",
         description: "Displays the Pad Timer on the screen",
-        category: "M7/F7",
+        category: "Dungeon-QOL",
         subcategory: "Storm"
     })
     padTimer = false;
@@ -64,7 +64,7 @@ class Settings {
     @ButtonProperty({
         name: "Move Pad Timer GUI",
         description: "Scroll to change scale, middle click to reset",
-        category: "M7/F7",
+        category: "Dungeon-QOL",
         subcategory: "Storm",
         placeholder: "Move",
     })
@@ -141,7 +141,7 @@ class Settings {
     @SwitchProperty({
         name: "All Leaped",
         description: "Alerts you when everyone is in P5",
-        category: "M7/F7",
+        category: "Dungeon-QOL",
         subcategory: "M7 P5"
     })
     allLeaped = false;
