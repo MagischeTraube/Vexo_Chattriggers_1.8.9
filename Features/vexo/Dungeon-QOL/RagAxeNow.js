@@ -2,6 +2,7 @@ import config from "../../../config"
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
 import { onChatPacket } from "../../../../BloomCore/utils/Events";
 
+// modified uwu addons
 
 const triggers = [
     "[BOSS] Wither King: I no longer wish to fight, but I know that will not stop you.",
