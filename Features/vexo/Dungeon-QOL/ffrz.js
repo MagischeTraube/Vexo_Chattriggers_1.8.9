@@ -1,6 +1,7 @@
 import config from "../../../config"
 import { data } from "../../../utils/data"
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
+import { GuiEditor } from "../../../utils/util";
 
 let countdownActive = false;
 let countdownEnd = 0;
@@ -9,13 +10,13 @@ let showNowOverlayUntil = 0;
 
 
 registerWhen(register("chat", (msg) => {
-    // ChatLib.chat(`§aTest 0,5`);
     if (!config.ffrz) return;
     countdownActive = true;
     countdownEnd = Date.now() + 5000;
     showNowOverlayUntil = 0;
 }).setCriteria("[BOSS] The Professor: Oh? You found my Guardians' one weakness?").setContains(), () => config.ffrz);
 
+GuiEditor("ffrz", '&9Fire Freeze: &65.0')
 
 register("renderOverlay", () => {
     if (countdownActive) {
@@ -47,35 +48,4 @@ register("renderOverlay", () => {
     ffrzOverlay.draw(data.ffrz.x, data.ffrz.y)
 
 
-})
-
-
-register("renderOverlay", () => {
-    if (config.ffrzGUI.isOpen()) {
-        ffrzOverlay.setString('&9Fire Freeze: &65.0')
-        ffrzOverlay.setScale(data.ffrz.scale)
-        ffrzOverlay.draw(data.ffrz.x, data.ffrz.y)
-    }
-})
-
-register("dragged", (dx, dy, x, y, bn) => {
-    if (!config.ffrzGUI.isOpen() || bn == 2) return
-    data.ffrz.x = x
-    data.ffrz.y = y
-    data.save()
-})
-
-register("scrolled", (x, y, dir) => {
-    if (!config.ffrzGUI.isOpen()) return
-    if (dir == 1) data.ffrz.scale += 0.05
-    else data.ffrz.scale -= 0.05
-    data.save()
-})
-
-register("guiMouseClick", (x, y, bn) => {
-    if (!config.ffrzGUI.isOpen() || bn != 2) return
-    data.ffrz.x = Renderer.screen.getWidth() / 2
-    data.ffrz.y = Renderer.screen.getHeight() / 2 + 10
-    data.ffrz.scale = 1
-    data.save()
 })

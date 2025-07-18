@@ -9,6 +9,6 @@ registerWhen(register("renderEntity", (entity, poss, pt, event) => {
         let entX = entity.getRenderX();
         let entY = entity.getRenderY();
         let entZ = entity.getRenderZ();
-        RenderLibV2J.drawEspBoxV2(entX, entY - 2, entZ, 1, 2, 1, 10, 10, 10, 100, true, 1);
+        RenderLibV2J.drawEspBoxV2(entX, entY - 2, entZ, 1, 2, 1, 255/255, 255/255, 255/255, 100, true, 1);
     }
 }), () => config.StarESP);

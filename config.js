@@ -23,7 +23,7 @@ class Settings {
     padTimerGUI = new Gui()
 
     ///////////////////////////////////////////////
-    // tera ///////////////////////////////////////
+    // vexo ///////////////////////////////////////
     ///////////////////////////////////////////////
 
     @SwitchProperty({
@@ -167,7 +167,7 @@ class Settings {
 
     constructor() {
         this.initialize(this);
-        this.setCategoryDescription("Dungeon-QOL", "&aMod Created by Traube_V2 and InfernoLloyd; #0 Dungeon Players \n Version 1.0.1 ");
+        this.setCategoryDescription("Dungeon-QOL", "&aMod Created by Traube_V2 and InfernoLloyd\n Version 1.0.1 ");
 
 
         // Add dependencies

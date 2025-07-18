@@ -10,7 +10,6 @@ import "./Features/vexo/Dungeon-QOL/allLeapedP5"
 import "./Features/vexo/QOL/rejoin"
 import "./Features/vexo/Dungeon-QOL/StopMageSheepRendering"
 
-//vexo
 import { GUICommand } from "./Features/gui"
 import { RewarpCommand } from "./Features/vexo/QOL/rewarp"
 import { TYFRCommand } from "./Features/vexo/Dungeon-QOL/tyfr"
