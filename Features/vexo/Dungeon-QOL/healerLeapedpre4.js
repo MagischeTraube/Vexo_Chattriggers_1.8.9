@@ -5,7 +5,6 @@ import { getClass, GuiEditor } from "../../../utils/util";
 
 GuiEditor("healerLeapedpre4", "&6HEALER LEAPED!")
 
-let healerLeapedpre4Overlay = new Text("&6HEALER LEAPED!");
 let notifiedHealerLeaped = false; 
 let isInP2 = false;
 let isBers = false;

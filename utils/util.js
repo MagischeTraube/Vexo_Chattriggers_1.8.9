@@ -10,6 +10,8 @@ export function isInDungeon() {
 }
 
 export function DevMessage(messages) {
+    const prefix_vexodebug = "§3[vexo-DEBUG]"
+
     if (!config.DevMessages) return;
 
     if (Array.isArray(messages)) {
@@ -25,21 +27,21 @@ export function DevMessage(messages) {
                         text = `[Object] - Could not stringify: ${e.message}`;
                     }
                 }
-                ChatLib.chat("§3[vexo-DEBUG]  &7" + text);
+                ChatLib.chat(prefix_vexodebug + " &7" + text);
             } else {
-                ChatLib.chat("§3[vexo-DEBUG]  &7" + message);
+                ChatLib.chat(prefix_vexodebug + " &7" + message);
             }
         });
     } else {
         if (typeof messages === "object" && messages !== null) {
             try {
                 const text = JSON.stringify(messages, null, 0);
-                ChatLib.chat("§3[vexo-DEBUG]  &7" + text);
+                ChatLib.chat(prefix_vexodebug + " &7" + text);
             } catch (e) {
-                ChatLib.chat("§3[vexo-DEBUG]  &7" + `[Object] - Could not stringify: ${e.message}`);
+                ChatLib.chat(prefix_vexodebug + " &7" + `[Object] - Could not stringify: ${e.message}`);
             }
         } else {
-            ChatLib.chat("§3[vexo-DEBUG]  &7" + messages);
+            ChatLib.chat(prefix_vexodebug + " &7" + messages);
         }
     }
 }
@@ -124,7 +126,6 @@ export function tempTitle(GuiName, text, ticks) {
 
 const tickCounter = register("packetReceived", (packet) => {
     DevMessage("Tick!")
-    //DevMessage(activeTitles)
 
     for (let i = activeTitles.length - 1; i >= 0; i--) {
 
@@ -160,4 +161,17 @@ export function removeTempTitle(GuiID) {
         }
     }
     return false;
+}
+
+export function getAllPlayers() {
+    const players = World
+        .getAllPlayers()
+        .filter(player =>
+            (player.getUUID().version() === 4 || player.getUUID().version() === 1) && // Players and Watchdog have version 4, nicked players have version 1, this is done to exclude NPCs
+            player.ping === 1 // -1 is watchdog and ghost players, also there is a ghost player with high ping value when joining a world
+        )
+        .map(player => ({ name: player.name, x: player.getX(), y: player.getY(), z: player.getZ() })) // Store name and coordinates
+        .filter((x, i, a) => a.indexOf(x) == i); // Distinct, sometimes the players are duplicated in the list
+
+    return players;
 }
