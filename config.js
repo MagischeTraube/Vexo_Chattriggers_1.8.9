@@ -13,7 +13,7 @@ import {
 
 @Vigilant("vexo", "§4vexo",  {
     getCategoryComparator: () => (a, b) => {
-        const categories = ['Dungeon-QOL', 'M7/F7', 'QOL', 'Dev'];
+        const categories = ['Dungeon-QOL', 'QOL', 'Dev'];
         return categories.indexOf(a.name) - categories.indexOf(b.name);
     }
 })
@@ -21,6 +21,7 @@ import {
 class Settings {
     ffrzGUI = new Gui()
     padTimerGUI = new Gui()
+    healerLeapedpre4GUI = new Gui()
 
     ///////////////////////////////////////////////
     // vexo ///////////////////////////////////////
@@ -28,7 +29,7 @@ class Settings {
 
     @SwitchProperty({
         name: "Refill Boom",
-        description: "Refills Superboom-TNT at the biginning of a dungeon (normal boom = shorter cd)",
+        description: "Refills Superboom-TNT at the biginning of a dungeon\n(normal boom = shorter cd)",
         category: "Dungeon-QOL",
         subcategory: "Refill"
     })
@@ -131,6 +132,14 @@ class Settings {
     StarESP = false;
 
     @SwitchProperty({
+        name: "Debug Messages",
+        description: "Shows debug messages in console for development",
+        category: "Dev",
+        subcategory: "Logs"
+    })
+    DevMessages = false;
+
+    @SwitchProperty({
         name: "No Mage Sheep",
         description: "Prevents Mage Sheep from rendering",
         category: "Dungeon-QOL",
@@ -162,15 +171,30 @@ class Settings {
         subcategory: "Kicked"
     })
     rejoin = false;
-    
-    //Constructor 
+
+    @SwitchProperty({
+        name: "Pre4 Healer Leap Alert",
+        description: "Alerts you when the healer has leaped to you",
+        category: "Dungeon-QOL",
+        subcategory: "Alerts"
+    })
+    healerLeapedpre4 = false;
+
+    @ButtonProperty({
+        name: "Move Healer Leaped Text",
+        description: "Scroll to change scale, middle click to reset",
+        category: "Dungeon-QOL",
+        subcategory: "Alerts",
+        placeholder: "Move",
+    })
+    MovehealerLeapedpre4() {
+        this.healerLeapedpre4GUI.open()
+    };
 
     constructor() {
         this.initialize(this);
         this.setCategoryDescription("Dungeon-QOL", "&aMod Created by Traube_V2 and InfernoLloyd\n Version 1.0.1 ");
 
-
-        // Add dependencies
         this.addDependency("Rewarp Coords", "Rewarp");
         this.addDependency("Rewarp Coords", "Rewarp on Coords");
         this.addDependency("Rewarp on Coords", "Rewarp");
@@ -178,6 +202,7 @@ class Settings {
         this.addDependency("Rewarp to", "Rewarp");
         this.addDependency("Move M3 Timer GUI", "M3 Timer");
         this.addDependency("Move Pad Timer GUI", "Pad Timer");
+        this.addDependency("Move Healer Leaped Text", "Pre4 Healer Leap Alert");
     }
 }
 
