@@ -8,6 +8,7 @@ let countdownEnd = 0;
 let ffrzOverlay = new Text("");
 let showNowOverlayUntil = 0;
 
+GuiEditor("ffrz", '&9Fire Freeze: &65.0')
 
 registerWhen(register("chat", (msg) => {
     if (!config.ffrz) return;
@@ -15,8 +16,6 @@ registerWhen(register("chat", (msg) => {
     countdownEnd = Date.now() + 5000;
     showNowOverlayUntil = 0;
 }).setCriteria("[BOSS] The Professor: Oh? You found my Guardians' one weakness?").setContains(), () => config.ffrz);
-
-GuiEditor("ffrz", '&9Fire Freeze: &65.0')
 
 register("renderOverlay", () => {
     if (countdownActive) {
@@ -46,6 +45,4 @@ register("renderOverlay", () => {
     ffrzOverlay.setString(ffrzText);
     ffrzOverlay.setScale(data.ffrz.scale);
     ffrzOverlay.draw(data.ffrz.x, data.ffrz.y)
-
-
 })
