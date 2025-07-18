@@ -1,6 +1,10 @@
 import config from "../../../config"
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
 import { onChatPacket } from "../../../../BloomCore/utils/Events";
+import { GuiEditor, tempTitle } from "../../../utils/util";
+
+GuiEditor("RagAxeAlert", "&fRAG AXE NOW!")
+
 
 // modified uwu addons
 
@@ -12,5 +16,5 @@ triggers.forEach(trigger=> {
     registerWhen(onChatPacket((msg) => {
         if (!config.RagAxeAlert) return
         World.playSound("note.pling", 1.0, 2.0);
-        Client.showTitle("&fRAG AXE NOW!", "", 0, 50, 5)
+        tempTitle("RagAxeAlert","&fRAG AXE NOW!");
     }).setCriteria(trigger), () => config.RagAxeAlert);})

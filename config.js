@@ -22,6 +22,7 @@ class Settings {
     ffrzGUI = new Gui()
     padTimerGUI = new Gui()
     healerLeapedpre4GUI = new Gui()
+    RagAxeAlertGUI = new Gui()
 
     ///////////////////////////////////////////////
     // vexo ///////////////////////////////////////
@@ -164,6 +165,17 @@ class Settings {
     })
     RagAxeAlert = false;
 
+    @ButtonProperty({
+        name: "Move Rag Axe Alert Text",
+        description: "Scroll to change scale, middle click to reset",
+        category: "Dungeon-QOL",
+        subcategory: "Alerts",
+        placeholder: "Move",
+    })
+    MoveRagAxeAlert() {
+        this.RagAxeAlertGUI.open()
+    };
+
     @SwitchProperty({
         name: "Auto Rejoin on Kick",
         description: "Automatically notifies the party that you were kicked and rejoins in 65 seconds",
@@ -203,6 +215,7 @@ class Settings {
         this.addDependency("Move M3 Timer GUI", "M3 Timer");
         this.addDependency("Move Pad Timer GUI", "Pad Timer");
         this.addDependency("Move Healer Leaped Text", "Pre4 Healer Leap Alert");
+        this.addDependency("Move Rag Axe Alert Text", "Rag Axe Alert");
     }
 }
 

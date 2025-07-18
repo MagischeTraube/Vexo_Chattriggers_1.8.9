@@ -6,6 +6,13 @@ export const data = new PogObject("vexo", {
         y: Renderer.screen.getHeight() / 2 + 10,
         scale: 1
     },
+
+    healerLeapedpre4: {
+        x: Renderer.screen.getWidth() / 2,
+        y: Renderer.screen.getHeight() / 2 + 10,
+        scale: 1
+    },
+
     padTimer: {
         x: Renderer.screen.getWidth() / 2,
         y: Renderer.screen.getHeight() / 2 + 10,
