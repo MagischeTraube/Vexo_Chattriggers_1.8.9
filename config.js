@@ -56,7 +56,7 @@ class Settings {
     @SwitchProperty({
         name: "Pad Timer",
         description: "Displays the Pad Timer on the screen",
-        category: "M7/F7",
+        category: "Dungeon-QOL",
         subcategory: "Storm"
     })
     padTimer = false;
@@ -64,7 +64,7 @@ class Settings {
     @ButtonProperty({
         name: "Move Pad Timer GUI",
         description: "Scroll to change scale, middle click to reset",
-        category: "M7/F7",
+        category: "Dungeon-QOL",
         subcategory: "Storm",
         placeholder: "Move",
     })
@@ -131,17 +131,17 @@ class Settings {
     StarESP = false;
 
     @SwitchProperty({
-        name: "Render Sheeps",
-        description: "Stops rendering the Mage sheep",
+        name: "No Mage Sheep",
+        description: "Prevents Mage Sheep from rendering",
         category: "Dungeon-QOL",
         subcategory: "Render"
     })
-    SheepRender = false;
+    NoMageSheep = false;
     
     @SwitchProperty({
         name: "All Leaped",
         description: "Alerts you when everyone is in P5",
-        category: "M7/F7",
+        category: "Dungeon-QOL",
         subcategory: "M7 P5"
     })
     allLeaped = false;
