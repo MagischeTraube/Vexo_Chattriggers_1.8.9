@@ -1,14 +1,16 @@
 import config from "../../../config"
 import { data } from "../../../utils/data"
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
-
+import { GuiEditor } from "../../../utils/util";
 
 let serverTicks = 0;
 let padTimerActive = false;
 let nowOverlayTicks = 0;
 const S32PacketConfirmTransaction = Java.type("net.minecraft.network.play.server.S32PacketConfirmTransaction"); 
-const GP = 'Pad &agreen &rin&b: '
+const GP = 'Pad &agreen &rin: &b'
 padTimerOverlay = new Text("");
+
+GuiEditor("padTimer", `${GP}Now!`)
 
 register("chat", () => {
     if (!config.padTimer) return;
@@ -40,41 +42,16 @@ register("renderOverlay", () => {
     }
     if (padTimerActive && serverTicks >= 25)
         padTimerOverlay.setString(`${GP}${(serverTicks - 25) / 20}s`);
+
     else if (padTimerActive && serverTicks < 25)
         padTimerOverlay.setString(`${GP}: Now!`);
+
     else if (!padTimerActive && nowOverlayTicks > 0)
         padTimerOverlay.setString(`${GP}: Now!`);
+
     padTimerOverlay.setScale(data.padTimer.scale);
     padTimerOverlay.draw(data.padTimer.x, data.padTimer.y);
-    if (!padTimerActive && nowOverlayTicks > 0) nowOverlayTicks--;
+    if (!padTimerActive && nowOverlayTicks > 0) {
+        nowOverlayTicks--
+    };
 });
-
-register("renderOverlay", () => {
-    if (config.padTimerGUI.isOpen()) {
-        padTimerOverlay.setString('&9${GP}: Now!')
-        padTimerOverlay.setScale(data.padTimer.scale)
-        padTimerOverlay.draw(data.padTimer.x, data.padTimer.y)
-    }
-})
-
-register("dragged", (dx, dy, x, y, bn) => {
-    if (!config.padTimerGUI.isOpen() || bn == 2) return
-    data.padTimer.x = x
-    data.padTimer.y = y
-    data.save()
-})
-
-register("scrolled", (x, y, dir) => {
-    if (!config.padTimerGUI.isOpen()) return
-    if (dir == 1) data.padTimer.scale += 0.05
-    else data.padTimer.scale -= 0.05
-    data.save()
-})
-
-register("guiMouseClick", (x, y, bn) => {
-    if (!config.padTimerGUI.isOpen() || bn != 2) return
-    data.padTimer.x = Renderer.screen.getWidth() / 2
-    data.padTimer.y = Renderer.screen.getHeight() / 2 + 10
-    data.padTimer.scale = 1
-    data.save()
-})
