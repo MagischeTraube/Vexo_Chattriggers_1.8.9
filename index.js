@@ -9,6 +9,7 @@ import "./Features/vexo/Dungeon-QOL/RagAxeNow"
 import "./Features/vexo/Dungeon-QOL/allLeapedP5"
 import "./Features/vexo/QOL/rejoin"
 import "./Features/vexo/Dungeon-QOL/StopMageSheepRendering"
+import "./Features/vexo/Dungeon-QOL/healerLeapedpre4"
 
 import { GUICommand } from "./Features/gui"
 import { RewarpCommand } from "./Features/vexo/QOL/rewarp"
