@@ -163,6 +163,7 @@ export function removeTempTitle(GuiID) {
     return false;
 }
 
+// Credits FreshNotifier
 export function getAllPlayers() {
     const players = World
         .getAllPlayers()

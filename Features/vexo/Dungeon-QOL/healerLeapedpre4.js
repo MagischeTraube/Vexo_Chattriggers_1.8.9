@@ -20,25 +20,8 @@ registerWhen(register("chat", (msg) => {
     return msg;
 }).setCriteria("[BOSS] Storm: I'd be happy to show you what that's like!"), () => config.healerLeapedpre4);
 
-
-// Credits FreshNotifier
-function getAllPlayers() { // not working perfectly
-    const players = World
-        .getAllPlayers()
-        .filter(player =>
-            (player.getUUID().version() === 4 || player.getUUID().version() === 1) && // Players and Watchdog have version 4, nicked players have version 1, this is done to exclude NPCs
-            player.ping === 1 && // -1 is watchdog and ghost players, also there is a ghost player with high ping value when joining a world
-            player.getY() < 138
-        )
-        .map(player => player.name)
-        .filter((x, i, a) => a.indexOf(x) == i); // Distinct, sometimes the players are duplicated in the list
-    
-    let playersCount = players.length;
-    return playersCount;
-}
-
 registerWhen(register("tick", () => {
-    if (getAllPlayers() === 2) {
+    if (getAllPlayers().filter(player => player.y < 138).length === 2) {
         notifiedHealerLeaped = true;
         tempTitle("healerLeapedpre4", "&6HEALER LEAPED!", 30)
     }
