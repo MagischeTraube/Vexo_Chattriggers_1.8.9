@@ -1,7 +1,8 @@
 import config from "../../../config"
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
 import { onChatPacket } from "../../../../BloomCore/utils/Events";
-import { GuiEditor, tempTitle } from "../../../utils/util";
+import { GuiEditor } from "../../../utils/GuiEditor";
+import { tempTitle } from "../../../utils/tempTitle";
 
 GuiEditor("RagAxeAlert", "&fRAG AXE NOW!")
 

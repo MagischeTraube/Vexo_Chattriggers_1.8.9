@@ -1,7 +1,9 @@
 import config from '../../../config'
 import { registerWhen } from "../../../../BloomCore/utils/Utils"
 import { onChatPacket } from "../../../../BloomCore/utils/Events";
-import { getAllPlayers, GuiEditor, tempTitle } from '../../../utils/util';
+import { getAllPlayers } from '../../../utils/util';
+import { GuiEditor } from '../../../utils/GuiEditor';
+import { tempTitle } from '../../../utils/tempTitle';
 
 let isInP5 = false;
 let notifiedallLeaped = false;

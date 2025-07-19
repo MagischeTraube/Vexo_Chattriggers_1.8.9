@@ -1,7 +1,7 @@
 import config from "../../../config"
 import { data } from "../../../utils/data"
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
-import { GuiEditor } from "../../../utils/util";
+import { GuiEditor } from "../../../utils/GuiEditor";
 
 let countdownActive = false;
 let countdownEnd = 0;

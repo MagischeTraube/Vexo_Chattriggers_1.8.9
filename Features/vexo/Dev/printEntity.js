@@ -1,6 +1,6 @@
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
 import config from "../../../config";
-import { DevMessage } from "../../../utils/util";
+import { DevMessage } from "../../../utils/DevMessage";
 
 
 registerWhen(register("renderEntity", (entity, poss, pt, event) => {
