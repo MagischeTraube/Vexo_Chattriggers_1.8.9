@@ -7,7 +7,6 @@ let isMage = false;
 
 
 register(`worldUnload`, () => {
-    inDungeon = false;
     isMage = false;
 });
 
