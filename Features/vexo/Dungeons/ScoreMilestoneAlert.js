@@ -11,22 +11,22 @@ let inDungeon = false;
 let notifiedScoreMilestone = false;
 
 registerWhen(register("chat", (msg) => { 
-    let inDungeon = true;
+    inDungeon = true;
 
     return msg;
 }).setCriteria("Starting in 1 second."), () => config.ScoreMilestoneAlert);
 
 registerWhen(register("tick", () => { 
-    let current_score = Dungeon.score;
+    let current_score = Dungeon.score;      
     let current_deaths = Dungeon.deaths;
 
     if (current_score >= 301 && current_deaths == 0) {
-        tempTitle("ScoreMilestoneAlert", `GO IN! ${current_score} SCORE`)
+        tempTitle("ScoreMilestoneAlert", `GO IN! ${current_score} SCORE`, 50)
         notifiedScoreMilestone = true;
     } 
 
     if (current_score >= 302 && current_deaths >= 1) {
-        tempTitle("ScoreMilestoneAlert", `GO IN! ${current_score} SCORE`)
+        tempTitle("ScoreMilestoneAlert", `GO IN! ${current_score} SCORE`, 50)
         notifiedScoreMilestone = true;
     } 
     
