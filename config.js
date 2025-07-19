@@ -72,7 +72,7 @@ import {
             //Rewarp
             'Rewarp',
             'Rewarp to',
-            'Rewarp monolyth',
+            'Rewarp monolith',
             'Rewarp on Coords',
             'Rewarp Coords',
             //////////////////////////////////////////////////
@@ -354,7 +354,7 @@ class Settings {
         
         // QOL
         this.addDependency("Rewarp to", "Rewarp");
-        this.addDependency("Rewarp monolyth", "Rewarp");
+        this.addDependency("Rewarp monolith", "Rewarp");
         this.addDependency("Rewarp on Coords", "Rewarp");
         this.addDependency("Rewarp Coords", "Rewarp on Coords");
         
