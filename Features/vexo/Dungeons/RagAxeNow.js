@@ -2,7 +2,7 @@ import config from "../../../config"
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
 import { onChatPacket } from "../../../../BloomCore/utils/Events";
 import { GuiEditor } from "../../../utils/GuiEditor";
-import { tempTitle } from "../../../utils/tempTitle";
+import { tempTitle } from "../../../utils/tempOverlay";
 
 GuiEditor("RagAxeAlert", "&fRAG AXE NOW!")
 
@@ -17,5 +17,5 @@ triggers.forEach(trigger=> {
     registerWhen(onChatPacket((msg) => {
         if (!config.RagAxeAlert) return
         World.playSound("note.pling", 1.0, 2.0);
-        tempTitle("RagAxeAlert","&fRAG AXE NOW!");
+        tempTitle("RagAxeAlert","&fRAG AXE NOW!", 50);
     }).setCriteria(trigger), () => config.RagAxeAlert);})

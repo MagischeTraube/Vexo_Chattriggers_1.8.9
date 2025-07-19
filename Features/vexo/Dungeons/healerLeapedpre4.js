@@ -1,6 +1,7 @@
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
 import config from "../../../config";
 import { GuiEditor } from "../../../utils/GuiEditor";
+import { tempTitle } from "../../../utils/tempOverlay";
 import { getClass } from "../../../utils/util";
 
 GuiEditor("healerLeapedpre4", "&6HEALER LEAPED!")
