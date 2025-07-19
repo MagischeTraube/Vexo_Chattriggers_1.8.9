@@ -1,6 +1,8 @@
 import { data } from "./data";
 import { DevMessage } from "./DevMessage";
 
+const S32PacketConfirmTransaction = "net.minecraft.network.play.server.S32PacketConfirmTransaction"
+
 const activeTitles = [];
 
 export function tempTitle(GuiName, text, ticks) {
@@ -55,6 +57,8 @@ export function tempTitleCountdown(GuiName, text, ticks) {
 
 
 const tickCounter = register("packetReceived", (packet) => {
+    if (packet.func_148890_d() > 0) return;
+
     DevMessage("Tick!")
     DevMessage(activeTitles)
 
@@ -71,7 +75,7 @@ const tickCounter = register("packetReceived", (packet) => {
         tickCounter.unregister();
         drawTitle.unregister();
     }
-}).setFilteredClass(Java.type("net.minecraft.network.play.server.S32PacketConfirmTransaction")).unregister();
+}).setFilteredClass(Java.type(S32PacketConfirmTransaction)).unregister();
 
 
 const drawTitle = register('renderOverlay', () => {
@@ -96,9 +100,10 @@ const drawTitle = register('renderOverlay', () => {
     });
 }).unregister();
 
-export function removeTempTitle(GuiID) {
+export function removeTempTitle(GuiName) {
+    DevMessage(`removeTempTitle ${GuiName}`)
     for (let i = activeTitles.length - 1; i >= 0; i--) {
-        if (activeTitles[i].id === GuiID) {
+        if (activeTitles[i].id === GuiName) {
             activeTitles.splice(i, 1);
             if (activeTitles.length === 0) {
                 tickCounter.unregister();
