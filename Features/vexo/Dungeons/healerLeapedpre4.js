@@ -2,7 +2,7 @@ import { registerWhen } from "../../../../BloomCore/utils/Utils";
 import config from "../../../config";
 import { GuiEditor } from "../../../utils/GuiEditor";
 import { tempTitle } from "../../../utils/tempOverlay";
-import { getClass } from "../../../utils/util";
+import { getAllPlayers, getClass } from "../../../utils/util";
 
 GuiEditor("healerLeapedpre4", "&6HEALER LEAPED!")
 
@@ -14,14 +14,13 @@ let isBers = false;
 registerWhen(register("chat", (msg) => {
     if (getClass() == "Berserk") {
         isBers = true;
-        ChatLib.chat(getClass())
     }
     isInP2 = true;
     return msg;
 }).setCriteria("[BOSS] Storm: I'd be happy to show you what that's like!"), () => config.healerLeapedpre4);
 
 registerWhen(register("tick", () => {
-    if (getAllPlayers().filter(player => player.y < 138).length === 2) {
+    if (getAllPlayers().filter(player => player.y < 138).length == 2) {
         World.playSound("note.pling", 1.0, 2.0);
         tempTitle("healerLeapedpre4", "&6HEALER LEAPED!", 30)
         notifiedHealerLeaped = true
