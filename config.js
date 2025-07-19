@@ -47,6 +47,8 @@ import {
         const order = [
             // Dungeons ///////////////////////////////////
             // Alerts
+            'Score Milestone Alert',
+            'Move Score Milestone GUI',
             'Pre4 Healer Leaped Alert',
             'Move Healer Leaped GUI',
             'Rag Axe Alert',
@@ -95,6 +97,8 @@ class Settings {
 
     /// GUIS //////////////////////////////////////
     // Dungeons
+
+    ScoreMilestoneAlertGUI = new Gui()
     healerLeapedpre4GUI = new Gui()
     RagAxeAlertGUI = new Gui()
     allLeapedGUI = new Gui()
@@ -115,10 +119,29 @@ class Settings {
 
     // Alerts
     @SwitchProperty({
-        name: "Pre4 Healer Leap Alert",
+        name: "Score Milestone Alert",
+        description: "Notifies you when your dungeon score is 301,\nor 302 if your party has one or more deaths.",
+        category: "Dungeons",
+        subcategory: "Alerts",
+    })
+    ScoreMilestoneAlert = false;
+
+    @ButtonProperty({
+        name: "Move Score Milestone GUI",
+        description: "Scroll to change scale, middle click to reset",
+        category: "Dungeons",
+        subcategory: "Alerts",
+        placeholder: "Move",
+    })
+    MoveScoreMilestoneAlert() {
+        this.ScoreMilestoneAlertGUI.open()
+    };
+
+    @SwitchProperty({
+        name: "Pre4 Healer Leaped Alert",
         description: "Alerts you when the healer has leaped to you",
         category: "Dungeons",
-        subcategory: "Alerts"
+        subcategory: "Alerts",
     })
     healerLeapedpre4 = false;
 
@@ -137,7 +160,7 @@ class Settings {
         name: "Rag Axe Alert",
         description: "Tells you when to Rag Axe in P5",
         category: "Dungeons",
-        subcategory: "Alerts"
+        subcategory: "Alerts",
     })
     RagAxeAlert = false;
 
@@ -156,7 +179,7 @@ class Settings {
         name: "All Leaped",
         description: "Alerts you when everyone is in P5",
         category: "Dungeons",
-        subcategory: "Alerts"
+        subcategory: "Alerts",
     })
     allLeaped = false;
 
@@ -176,7 +199,7 @@ class Settings {
         name: "Refill Boom",
         description: "Refills Superboom-TNT at the biginning of a dungeon\n(normal boom = shorter cd)",
         category: "Dungeons",
-        subcategory: "Refill"
+        subcategory: "Refill",
     })
     sbtnt = false;
 
@@ -185,7 +208,7 @@ class Settings {
         name: "No Mage Sheep",
         description: "Prevents Mage Sheep from rendering",
         category: "Dungeons",
-        subcategory: "Render"
+        subcategory: "Render",
     })
     NoMageSheep = false;
 
@@ -194,7 +217,7 @@ class Settings {
         name: "M3 Timer",
         description: "Displays the Fire freeze timer on the screen",
         category: "Dungeons",
-        subcategory: "Timers"
+        subcategory: "Timers",
     })
     ffrz = false;
 
@@ -203,7 +226,7 @@ class Settings {
         description: "Scroll to change scale, middle click to reset",
         category: "Dungeons",
         subcategory: "Timers",
-        placeholder: "Move"
+        placeholder: "Move",
     })
     MoveffrzGUI() {
         this.ffrzGUI.open()
@@ -213,7 +236,7 @@ class Settings {
         name: "Pad Timer",
         description: "Displays the Pad Timer on the screen",
         category: "Dungeons",
-        subcategory: "Timers"
+        subcategory: "Timers",
     })
     padTimer = false;
 
@@ -237,7 +260,7 @@ class Settings {
         name: "Auto Rejoin on Kick",
         description: "Automatically notifies the party that you were kicked and rejoins in 65 seconds",
         category: "QOL",
-        subcategory: "Kicked"
+        subcategory: "Kicked",
     })
     rejoin = false;
 
@@ -246,7 +269,7 @@ class Settings {
         name: "Rewarp",
         description: "Warps u to is and back to is and back to the dwarven mines",
         category: "QOL",
-        subcategory: "Rewarp"
+        subcategory: "Rewarp",
     })
     rewarp = false;
 
@@ -255,7 +278,7 @@ class Settings {
         description: "The location you want to rewarp to, put the warp command without the /",
         category: "QOL",
         subcategory: "Rewarp",
-        placeholder: "warp mines"
+        placeholder: "warp mines",
     })
     rewarpto = "warp mines";
 
@@ -263,7 +286,7 @@ class Settings {
         name: "Rewarp monolyth",
         description: "rewarps after finding a monolyth",
         category: "QOL",
-        subcategory: "Rewarp"
+        subcategory: "Rewarp",
     })
     rewarpmonolyth = false;
 
@@ -271,7 +294,7 @@ class Settings {
         name: "Rewarp on Coords",
         description: "Not working Right Now",
         category: "QOL",
-        subcategory: "Rewarp"
+        subcategory: "Rewarp",
     })
     rewarpcoordstoggle = false;
 
@@ -280,7 +303,7 @@ class Settings {
         description: "Put the coords you want to rewarp to, format: x,y,z without spaces",
         category: "QOL",
         subcategory: "Rewarp",
-        placeholder: "0,0,0"
+        placeholder: "0,0,0",
     })
     rewarpcoords = "0,0,0";
 
@@ -293,7 +316,7 @@ class Settings {
         name: "Print Entitys",
         description: "Prints all entities to chat for debugging purposes (will lag your game)",
         category: "Dev",
-        subcategory: "Entity"
+        subcategory: "Entity",
     })
     printEntity = false;
 
@@ -301,7 +324,7 @@ class Settings {
         name: "Mob ESP",
         description: "Highlights starred mobs with a box",
         category: "Dev",
-        subcategory: "Entity"
+        subcategory: "Entity",
     })
     StarESP = false;
 
@@ -310,7 +333,7 @@ class Settings {
         name: "Debug Messages",
         description: "Shows debug messages in console for development",
         category: "Dev",
-        subcategory: "Logs"
+        subcategory: "Logs",
     })
     DevMessages = false;
 
@@ -322,7 +345,8 @@ class Settings {
         this.setCategoryDescription("Dungeons", "&aMod Created by Traube_V2 and InfernoLloyd\n Version 1.0.1 ");
 
         // Dungeons
-        this.addDependency("Move Healer Leaped GUI", "Pre4 Healer Leap Alert");
+        this.addDependency("Move Score Milestone GUI", "Score Milestone Alert");
+        this.addDependency("Move Healer Leaped GUI", "Pre4 Healer Leaped Alert");
         this.addDependency("Move Rag Axe Alert GUI", "Rag Axe Alert");
         this.addDependency("Move All Leaped GUI", "All Leaped");
         this.addDependency("Move M3 Timer GUI", "M3 Timer");

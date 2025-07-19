@@ -10,7 +10,7 @@ import "./Features/vexo/Dungeons/allLeapedP5"
 import "./Features/vexo/QOL/rejoin"
 import "./Features/vexo/Dungeons/StopMageSheepRendering"
 import "./Features/vexo/Dungeons/healerLeapedpre4"
-
+import "./Features/vexo/Dungeons/ScoreMilestoneAlert"
 
 import { RewarpCommand } from "./Features/vexo/QOL/rewarp"
 import { TYFRCommand } from "./Features/vexo/Dungeons/tyfr"
