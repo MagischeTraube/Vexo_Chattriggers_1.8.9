@@ -10,7 +10,7 @@ registerWhen(register("chat", () => {
     ChatLib.command("pc Kicked! Rejoining in 65 seconds", true);
     rejoining = true;
     setTimeout(() => {
-        ChatLib.command("play skyblock", true);
+        ChatLib.command("play skyblock", false);
     }, 65000);
 }).setCriteria("You were kicked while joining that server!"), () => config.rejoin);
 
