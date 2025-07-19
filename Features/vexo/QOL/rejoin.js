@@ -16,6 +16,7 @@ registerWhen(register("chat", () => {
 registerWhen(register("Chat", () => {
     if(!rejoining) return;
     else {
-        ChatLib.command(`pc I'm in Skyblock now`, true)
-        rejoining = false;}
+        ChatLib.command(`pc I'm in Skyblock now`, true);
+        rejoining = false;
+    }
 }).setCriteria("Welcome to Hypixel SkyBlock!"), () => config.rejoin)

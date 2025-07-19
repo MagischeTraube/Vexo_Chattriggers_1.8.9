@@ -1,12 +1,6 @@
 import PogObject from "../../PogData/index"
 
 export const data = new PogObject("vexo", {
-    ffrz: {
-        x: Renderer.screen.getWidth() / 2,
-        y: Renderer.screen.getHeight() / 2 + 10,
-        scale: 1
-    },
-
     healerLeapedpre4: {
         x: Renderer.screen.getWidth() / 2,
         y: Renderer.screen.getHeight() / 2 + 10,
@@ -14,6 +8,18 @@ export const data = new PogObject("vexo", {
     },
 
     RagAxeAlert: {
+        x: Renderer.screen.getWidth() / 2,
+        y: Renderer.screen.getHeight() / 2 + 10,
+        scale: 1
+    },
+
+    allLeaped: {
+        x: Renderer.screen.getWidth() / 2,
+        y: Renderer.screen.getHeight() / 2 + 10,
+        scale: 1
+    },
+
+    ffrz: {
         x: Renderer.screen.getWidth() / 2,
         y: Renderer.screen.getHeight() / 2 + 10,
         scale: 1
