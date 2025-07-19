@@ -7,27 +7,25 @@ let rewarpprogress = false;
 
 
 function rewarpfunction() {
-    let rewarpprogress = true;
+    rewarpprogress = true;
     ChatLib.command("is", false);
     DevMessage("rewarpfunction warped to island")
     setTimeout(() => {
         DevMessage("rewarpfunction warping!")
         ChatLib.command(config.rewarpto, false);
         DevMessage("rewarpfunction warped to config.rewarpto")
-        let rewarpprogress = false;
+        rewarpprogress = false;
     }, 5000);
 }
-
 
 export const RewarpCommand = register("command", () => {
     rewarpfunction();
 }).setName("rewarp");
 
-register("chat", (msg) => {
-    if (!config.rewarpmonolyth) return;
+registerWhen(register("chat", (msg) => {
+    if (!config.rewarpmonolith) return;
     rewarpfunction();
-}).setCriteria("MONOLITH! You found a mysterious Dark Monolith").setContains();
-
+}).setCriteria("MONOLITH! You found a mysterious Dark Monolith").setContains(), () => config.rewarpmonolith)
 
 registerWhen(register("step", () => {
     if (!config.rewarpcoordstoggle || rewarpprogress || !config.rewarp) return;

@@ -283,12 +283,12 @@ class Settings {
     rewarpto = "warp mines";
 
     @SwitchProperty({
-        name: "Rewarp monolyth",
-        description: "rewarps after finding a monolyth",
+        name: "Rewarp monolith",
+        description: "rewarps after finding a monolith",
         category: "QOL",
         subcategory: "Rewarp",
     })
-    rewarpmonolyth = false;
+    rewarpmonolith = false;
 
     @SwitchProperty({
         name: "Rewarp on Coords",
