@@ -1,10 +1,9 @@
 import config from "../../../config"
-import { data } from "../../../utils/data"
 import { registerWhen } from "../../../../BloomCore/utils/Utils";
 import { GuiEditor } from "../../../utils/GuiEditor";
 import { tempTitleCountdown } from "../../../utils/tempOverlay";
 
-GuiEditor("padTimer", `${GP}Now!`)
+GuiEditor("padTimer", `Pad &agreen &rin: &bNow!`)
 
 
 registerWhen(register("chat", () => {
