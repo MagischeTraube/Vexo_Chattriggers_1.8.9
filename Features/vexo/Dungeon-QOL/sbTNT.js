@@ -6,7 +6,7 @@ registerWhen(register("chat", (msg) => {
     ChatLib.chat(`${prefix_vexo} §aGetting Superboom TNT`);
     if (!config.sbtnt) return msg;
 
-    
+
     setTimeout(() => {
         ChatLib.command("od sb", true);
     }, 100);
