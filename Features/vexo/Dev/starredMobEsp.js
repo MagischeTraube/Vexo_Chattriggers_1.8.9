@@ -2,6 +2,7 @@ import { registerWhen } from "../../../../BloomCore/utils/Utils";
 import config from "../../../config";
 import RenderLibV2J from "../../../../RenderLibV2J"; 
 
+
 registerWhen(register("renderEntity", (entity, poss, pt, event) => {
     if (!config.StarESP) return;
 

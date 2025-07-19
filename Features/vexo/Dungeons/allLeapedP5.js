@@ -10,6 +10,7 @@ let notifiedallLeaped = false;
 
 GuiEditor("allLeaped", "&fALL LEAPED!")
 
+
 registerWhen(onChatPacket((event) => {
     isInP5 = true;
 }).setCriteria("[BOSS] Necron: Let's make some space!"), () => config.allLeaped);

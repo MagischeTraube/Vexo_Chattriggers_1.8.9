@@ -2,6 +2,7 @@ import { registerWhen } from "../../../../BloomCore/utils/Utils";
 import { prefix_vexo } from "../../../utils/util";
 import config from "../../../config";
 
+
 registerWhen(register("chat", (msg) => {
     ChatLib.chat(`${prefix_vexo} §aGetting Superboom TNT`);
     if (!config.sbtnt) return msg;

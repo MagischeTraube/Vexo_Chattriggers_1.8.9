@@ -6,6 +6,7 @@ import { tempTitleCountdown } from "../../../utils/tempOverlay";
 
 GuiEditor("padTimer", `${GP}Now!`)
 
+
 registerWhen(register("chat", () => {
     if (!config.padTimer) return;
     tempTitleCountdown("padTimer", "Pad &agreen &rin: &b", 171)

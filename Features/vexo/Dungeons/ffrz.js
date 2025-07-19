@@ -5,6 +5,7 @@ import { tempTitleCountdown } from "../../../utils/tempOverlay";
 
 GuiEditor("ffrz", '&9Fire Freeze: &65.0')
 
+
 registerWhen(register("chat", (msg) => {
     if (!config.ffrz) return;
     tempTitleCountdown("ffrz", "&9Fire Freeze: &6", 100)

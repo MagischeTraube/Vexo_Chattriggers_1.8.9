@@ -4,6 +4,7 @@ import { prefix_vexo } from "../../../utils/util";
 
 let rejoining = false;
 
+
 registerWhen(register("chat", () => {
     ChatLib.chat(`${prefix_vexo} §aRejoining in 65 Seconds...`);
     ChatLib.command("pc Kicked! Rejoining in 65 seconds", true);

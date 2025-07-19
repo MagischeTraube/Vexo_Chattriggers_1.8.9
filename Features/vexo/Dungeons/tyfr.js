@@ -3,6 +3,7 @@ import { prefix_vexo } from "../../../utils/util"
 
 let setTyfr = false;
 
+
 const triggers =[
     "Score:",
     "Tokens Earned:"

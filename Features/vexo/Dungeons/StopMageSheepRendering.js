@@ -5,6 +5,7 @@ import { getClass } from "../../../utils/util"
 const S34PacketMaps = Java.type("net.minecraft.network.play.server.S34PacketMaps")
 let isMage = false;
 
+
 register(`worldUnload`, () => {
     inDungeon = false;
     isMage = false;
