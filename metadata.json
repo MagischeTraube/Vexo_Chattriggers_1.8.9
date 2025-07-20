@@ -9,6 +9,7 @@
     "BloomCore",
     "Vigilance",
     "PogData",
-    "RenderLibV2J"
+    "RenderLibV2J",
+    "requestV2"
   ]
 }

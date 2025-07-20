@@ -16,3 +16,5 @@ import { RewarpCommand } from "./Features/vexo/QOL/rewarp"
 import { TYFRCommand } from "./Features/vexo/Dungeons/tyfr"
 import { SuckTrapCommand } from "./Features/vexo/Dungeons/SuckTrap"
 import { GUICommand } from "./Features/gui"
+
+import "./utils/autoUpdate"
