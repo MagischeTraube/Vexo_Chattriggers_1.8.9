@@ -23,7 +23,7 @@ export function checkForUpdates() {
         
         if (REMOTE_VERSION !== LOCAL_VERSION) {
             ChatLib.chat(`${prefix_vexo} &eNew Version ${REMOTE_VERSION} found!  Updating...`);
-            //downloadAndInstallUpdate(DOWNLOAD_URL);
+            downloadAndInstallUpdate(DOWNLOAD_URL);
         } else {
             ChatLib.chat(`${prefix_vexo} &aYou already have the latest version ${LOCAL_VERSION}`);
         }
