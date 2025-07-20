@@ -11,6 +11,10 @@ import {
     @NumberProperty,
 } from '../Vigilance/index';
 
+import { getVersion } from "./utils/util";
+
+const version = getVersion()
+
 @Vigilant("vexo", "§3vexo",  {
     getCategoryComparator: () => (a, b) => {
         const categories = [
@@ -342,7 +346,7 @@ class Settings {
 
     constructor() {
         this.initialize(this);
-        this.setCategoryDescription("Dungeons", "&aMod Created by Traube_V2 and InfernoLloyd\n Version 1.0.1 ");
+        this.setCategoryDescription("Dungeons", `&aMod Created by Traube_V2 and InfernoLloyd\n Version ${version}`);
 
         // Dungeons
         this.addDependency("Move Score Milestone GUI", "Score Milestone Alert");

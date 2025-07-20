@@ -2,7 +2,7 @@
   "name": "vexo",
   "creator": "Traube_V2 and InfernoLloyd",
   "description": "1.8.9 Dungeons ChatTriggers module",
-  "version": "1000.1.0.1",
+  "version": "1000.1.0.0",
   "entry": "index.js",
   "requires": 
   [

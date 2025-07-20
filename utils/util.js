@@ -6,6 +6,11 @@ export function isInDungeon() {
     } catch (e) { }
 }
 
+export function getVersion() {
+    const version = JSON.parse(FileLib.read("Vexo", "metadata.json")).version.replace("1000.", "")
+    return version;
+}
+
 export function playercoords() {
     let x = Player.getX()
     let y = Player.getY()

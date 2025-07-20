@@ -1,13 +1,14 @@
 import request from "../../requestV2";
-import { prefix_vexo } from "./util";
+import { getVersion, prefix_vexo } from "./util";
 
 const MODULE_NAME = "vexo";
-const LOCAL_VERSION = "1.0.1";
+const LOCAL_VERSION = getVersion()
 const GITHUB_REPO = "MagischeTraube/Vexo_Chattriggers_1.8.9";
 const API_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
 const TEMP_DIR = `./config/ChatTriggers/modules/Vexo/updates`;
 const TEMP_ZIP_PATH = `${TEMP_DIR}/${MODULE_NAME}_update.zip`;
 const MODULE_DIR = `./config/ChatTriggers/modules/Vexo/`;
+
 
 export function checkForUpdates() {
     request({
