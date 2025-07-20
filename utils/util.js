@@ -1,12 +1,14 @@
-import { data } from "./data"
-import config from "../config"
-
 export const prefix_vexo = "§3[vexo]"
 
 export function isInDungeon() {
     try {
         return TabList?.getNames()?.some(a => a.removeFormatting() == 'Dungeon: Catacombs')
     } catch (e) { }
+}
+
+export function getVersion() {
+    const version = JSON.parse(FileLib.read("Vexo", "metadata.json")).version.replace("1000.", "")
+    return version;
 }
 
 export function playercoords() {
@@ -24,37 +26,20 @@ export function getClass() {
     return match[1];
 }
 
-export function GuiEditor(GuiName, previewText) {
-    const guiConfig = config[`${GuiName}GUI`];
-    const guiData = data[GuiName];
-    const overlay = new Text("")
+export function getDistance(x1, y1, z1, x2, y2, z2) {
+    return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2 + (z2 - z1) ** 2)
+}
 
-    register("renderOverlay", () => {
-        if (guiConfig.isOpen()) {
-            overlay.setString(previewText);
-            overlay.setScale(guiData.scale);
-            overlay.draw(guiData.x, guiData.y);
-        }
-    });
+// Credits FreshNotifier
+export function getAllPlayers() {
+    const players = World
+        .getAllPlayers()
+        .filter(player =>
+            (player.getUUID().version() === 4 || player.getUUID().version() === 1) && // Players and Watchdog have version 4, nicked players have version 1, this is done to exclude NPCs
+            player.ping === 1 // -1 is watchdog and ghost players, also there is a ghost player with high ping value when joining a world
+        )
+        .map(player => ({ name: player.name, x: player.getX(), y: player.getY(), z: player.getZ() })) // Store name and coordinates
+        .filter((x, i, a) => a.indexOf(x) == i); // Distinct, sometimes the players are duplicated in the list
 
-    register("dragged", (dx, dy, x, y, button) => {
-        if (!guiConfig.isOpen() || button === 2) return;
-        guiData.x = x;
-        guiData.y = y;
-        data.save();
-    });
-
-    register("scrolled", (x, y, direction) => {
-        if (!guiConfig.isOpen()) return;
-        guiData.scale += (direction > 0) ? 0.05 : -0.05;
-        data.save();
-    });
-
-    register("guiMouseClick", (x, y, button) => {
-        if (!guiConfig.isOpen() || button !== 2) return;
-        guiData.x = Renderer.screen.getWidth() / 2;
-        guiData.y = Renderer.screen.getHeight() / 2 + 10;
-        guiData.scale = 1;
-        data.save();
-    });
+    return players;
 }
