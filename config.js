@@ -207,7 +207,7 @@ class Settings {
     // Refill
     @SwitchProperty({
         name: "Refill Boom",
-        description: "Refills Superboom-TNT at the biginning of a dungeon\n(normal boom = shorter cd)",
+        description: "Refills Superboom-TNT at the beginning of a dungeon\n(normal boom = shorter cd)",
         category: "Dungeons",
         subcategory: "Refill",
     })
