@@ -18,3 +18,11 @@ import { SuckTrapCommand } from "./Features/vexo/Dungeons/SuckTrap"
 import { GUICommand } from "./Features/gui"
 
 import "./utils/autoUpdate"
+import { checkForUpdates } from "./utils/autoUpdate"
+
+const autoUpdateChecker = register("tick", () => {
+    if (config.AutoUpdate) {
+        checkForUpdates()
+    }
+    autoUpdateChecker.unregister()
+})

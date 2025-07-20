@@ -1,3 +1,4 @@
+import { checkForUpdates } from "./utils/autoUpdate";
 import {
     @ButtonProperty,@CheckboxProperty,
     Color,
@@ -42,6 +43,7 @@ const version = getVersion()
             // Dev ///////////////////////////////////////////
             'Entity',
             'Logs',
+            'Update',
             //////////////////////////////////////////////////
         ];
         return subcategories.indexOf(a.name) - subcategories.indexOf(b.name);
@@ -87,6 +89,9 @@ const version = getVersion()
             'Mob ESP',
             //Log
             'Debug Messages',
+            //Update
+            'Auto Update',
+            'Manual Update',
             //////////////////////////////////////////////////
         ];
         return order.indexOf(a.attributes.name) - order.indexOf(b.attributes.name);
@@ -340,6 +345,26 @@ class Settings {
         subcategory: "Logs",
     })
     DevMessages = false;
+
+    // Update
+    @SwitchProperty({
+        name: "Auto Update",
+        description: "Automatically checks for updates and downloads the latest version",
+        category: "Dev",
+        subcategory: "Update",
+    })
+    AutoUpdate = false;
+
+    @ButtonProperty({
+        name: "Manual Update",
+        description: "Checks for updates and downloads the latest version",
+        category: "Dev",
+        subcategory: "Update",
+        placeholder: "Update",
+    })
+    ManualUpdate() {
+        checkForUpdates()
+    };
 
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
