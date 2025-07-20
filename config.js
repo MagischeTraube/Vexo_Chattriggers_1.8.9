@@ -91,6 +91,7 @@ const version = getVersion()
             'Debug Messages',
             //Update
             'Auto Update',
+            'Auto /ct reload',
             'Manual Update',
             //////////////////////////////////////////////////
         ];
@@ -355,6 +356,14 @@ class Settings {
     })
     AutoUpdate = false;
 
+    @SwitchProperty({
+        name: "Auto /ct reload",
+        description: "Automatically run /ct reload after updating",
+        category: "Dev",
+        subcategory: "Update",
+    })
+    AutoCTreload = false;
+
     @ButtonProperty({
         name: "Manual Update",
         description: "Checks for updates and downloads the latest version",
@@ -388,6 +397,7 @@ class Settings {
         this.addDependency("Rewarp Coords", "Rewarp on Coords");
         
         // Dev
+        this.addDependency("Auto /ct reload", "Auto Update");
 
     }
 }

@@ -41,7 +41,7 @@ function downloadAndInstallUpdate(downloadUrl) {
         }
     } catch (e) {
         ChatLib.chat(`${prefix_vexo} &cFolder error: ${e}`);
-        return;
+        return false;
     }
 
     try {
@@ -75,7 +75,9 @@ function downloadAndInstallUpdate(downloadUrl) {
         FileLib.unzip(TEMP_ZIP_PATH, MODULE_DIR);
         
         ChatLib.chat(`${prefix_vexo} &aUpdate successful! Use &6/ct reload&a.`);
+        return true;
     } catch (e) {
         ChatLib.chat(`${prefix_vexo} &Error: ${e}`);
+        return false;
     }
 }

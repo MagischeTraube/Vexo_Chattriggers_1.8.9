@@ -17,12 +17,14 @@ import { TYFRCommand } from "./Features/vexo/Dungeons/tyfr"
 import { SuckTrapCommand } from "./Features/vexo/Dungeons/SuckTrap"
 import { GUICommand } from "./Features/gui"
 
-import "./utils/autoUpdate"
 import { checkForUpdates } from "./utils/autoUpdate"
 
 const autoUpdateChecker = register("tick", () => {
     if (config.AutoUpdate) {
-        checkForUpdates()
+        let updateStatus = checkForUpdates()
+        if (updateStatus && config.AutoCTreload) {
+            ChatLib.command("ct reload", true)
+        }
     }
     autoUpdateChecker.unregister()
 })
