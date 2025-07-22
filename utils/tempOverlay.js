@@ -30,7 +30,7 @@ export function tempTitle(GuiName, text, ticks) {
     DevMessage("Registered tickCounter and drawTitle!")
 }
 
-export function tempTitleCountdown(GuiName, text, ticks) {
+export function tempTitleCountdown(GuiName, text, ticks, showTimeLeftTicks, countdownEndedText) {
     DevMessage(`tempTitleCountdown got: ${GuiName} ${text} ${ticks}`)
 
     let textOverlay = new Text(text);
@@ -43,7 +43,9 @@ export function tempTitleCountdown(GuiName, text, ticks) {
         Overlay: textOverlay,
         originalText: text,
         remainingTicks: ticks + 10, // 10 ticks to show NOW!
-        isCountdown: true
+        isCountdown: true,
+        showCountdownTimeTicks: showTimeLeftTicks,
+        coutdownOverText: countdownEndedText
     });
 
     DevMessage(`tempTitleCountdown pushed: ${GuiName}`)
@@ -83,13 +85,13 @@ const drawTitle = register('renderOverlay', () => {
         DevMessage("Drawing!")
 
         if (title.isCountdown) {
-            DevMessage(`${title.originalText} §c${title.remainingTicks} left`)
-            if (title.remainingTicks <= (100 + 10) && title.remainingTicks > 10) {
+            DevMessage(`${title.originalText} ${title.remainingTicks} left`)
+            if (title.remainingTicks <= (title.showCountdownTimeTicks + 10) && title.remainingTicks > 10) {
                 Overlay = title.Overlay.setString(`${title.originalText} ${Math.round(((title.remainingTicks-10)/20)*10)/10}s`);
                 Overlay.draw(data[title.id].x, data[title.id].y);
 
             } else if (title.remainingTicks <= 10 && title.remainingTicks >= 0) {
-                Overlay = title.Overlay.setString(`${title.originalText} NOW!`);
+                Overlay = title.Overlay.setString(`${title.originalText} ${title.coutdownOverText}`);
                 Overlay.draw(data[title.id].x, data[title.id].y);
             }
         } 
