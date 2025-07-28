@@ -24,3 +24,4 @@ const UpdateChecker = register("tick", () => {
     checkForUpdates()
     UpdateChecker.unregister();
 });
+ChatLib.chat("never gonna give u up, uve ben rick rolled")
