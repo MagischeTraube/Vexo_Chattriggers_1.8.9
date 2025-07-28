@@ -87,7 +87,9 @@ const drawTitle = register('renderOverlay', () => {
         if (title.isCountdown) {
             DevMessage(`${title.originalText} ${title.remainingTicks} left`)
             if (title.remainingTicks <= (title.showCountdownTimeTicks + 10) && title.remainingTicks > 10) {
-                Overlay = title.Overlay.setString(`${title.originalText} ${Math.round(((title.remainingTicks-10)/20)*10)/10}s`);
+                let secondsleft = Math.round(((title.remainingTicks-10)/20)*10)/10
+                
+                Overlay = title.Overlay.setString(`${title.originalText} ${secondsleft}s`);
                 Overlay.draw(data[title.id].x, data[title.id].y);
 
             } else if (title.remainingTicks <= 10 && title.remainingTicks >= 0) {
@@ -105,7 +107,7 @@ const drawTitle = register('renderOverlay', () => {
 export function removeTempTitle(GuiName) {
     DevMessage(`removeTempTitle ${GuiName}`)
     for (let i = activeTitles.length - 1; i >= 0; i--) {
-        if (activeTitles[i].id === GuiName) {
+        if (activeTitles[i].id === GuiName && activeTitles[i].remainingTicks <= 0) {
             activeTitles.splice(i, 1);
             if (activeTitles.length === 0) {
                 tickCounter.unregister();

@@ -66,6 +66,8 @@ const version = getVersion()
             //Render
             'No Mage Sheep',
             //Timers
+            'Weirder Tuba Timer',
+            'Move Weirder Tuba Timer GUI',
             'M3 Timer',
             'Move M3 Timer GUI',
             'Pad Timer',
@@ -112,6 +114,7 @@ class Settings {
     healerLeapedpre4GUI = new Gui()
     RagAxeAlertGUI = new Gui()
     allLeapedGUI = new Gui()
+    weirderTubaTimerGUI = new Gui()
     ffrzGUI = new Gui()
     padTimerGUI = new Gui()
 
@@ -223,6 +226,26 @@ class Settings {
     NoMageSheep = false;
 
     // Timers
+    @SwitchProperty({
+        name: "Weirder Tuba Timer",
+        description: "Shows the remaining duration of the Weirder Tuba effect",
+        category: "Dungeons",
+        subcategory: "Timers",
+    })
+    weirderTubaTimer = false;
+
+    @ButtonProperty({
+        name: "Move Weirder Tuba Timer GUI",
+        description: "Scroll to change scale, middle click to reset",
+        category: "Dungeons",
+        subcategory: "Timers",
+        placeholder: "Move",
+    })
+    MoveweirderTubaTimerGUI() {
+        this.weirderTubaTimerGUI.open()
+    };
+
+
     @SwitchProperty({
         name: "M3 Timer",
         description: "Displays the Fire freeze timer on the screen",
