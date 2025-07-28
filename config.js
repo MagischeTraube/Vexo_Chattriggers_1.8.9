@@ -93,7 +93,6 @@ const version = getVersion()
             'Debug Messages',
             //Update
             'Update',
-            'Auto /ct reload',
             //////////////////////////////////////////////////
         ];
         return order.indexOf(a.attributes.name) - order.indexOf(b.attributes.name);
@@ -388,14 +387,6 @@ class Settings {
             ChatLib.chat(`${prefix_vexo} &cAn error occurred while checking for updates: ${error.message}`);
         });
     };
-
-    @SwitchProperty({
-        name: "Auto /ct reload",
-        description: "Automatically run /ct reload after updating",
-        category: "Dev",
-        subcategory: "Update",
-    })
-    AutoCTreload = false;
 
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
