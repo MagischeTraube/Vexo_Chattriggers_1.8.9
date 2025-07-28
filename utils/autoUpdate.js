@@ -8,6 +8,7 @@ const API_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
 const TEMP_DIR = `./config/ChatTriggers/modules/Vexo/updates`;
 const TEMP_ZIP_PATH = `${TEMP_DIR}/${MODULE_NAME}_update.zip`;
 const MODULE_DIR = `./config/ChatTriggers/modules/Vexo/`;
+const RELEASE_URL = "https://github.com/MagischeTraube/Vexo_Chattriggers_1.8.9/releases"
 
 
 export function checkForUpdates() {
@@ -22,17 +23,19 @@ export function checkForUpdates() {
         if (!DOWNLOAD_URL) throw new Error("No download URL found in the release!");
         
         if (REMOTE_VERSION !== LOCAL_VERSION) {
-            ChatLib.chat(`${prefix_vexo} &eNew Version ${REMOTE_VERSION} found!  Updating...`);
-            downloadAndInstallUpdate(DOWNLOAD_URL);
-        } else {
-            ChatLib.chat(`${prefix_vexo} &aYou already have the latest version ${LOCAL_VERSION}`);
+            let update_message = new Message(prefix_vexo + " &afound new version! ", new TextComponent("&c[Update-URL]").setClick("open_url", RELEASE_URL))
+            ChatLib.chat(update_message)
+            return DOWNLOAD_URL;
         }
+
+        return null;
     }).catch(error => {
         ChatLib.chat(`${prefix_vexo} &cUpdate-Check failed: ${error.message}`);
+        return null;
     });
 }
 
-function downloadAndInstallUpdate(downloadUrl) {
+export function downloadAndInstallUpdate(downloadUrl) {
     try {
         const dir = new java.io.File(TEMP_DIR);
         if (!dir.exists()) {
@@ -41,7 +44,6 @@ function downloadAndInstallUpdate(downloadUrl) {
         }
     } catch (e) {
         ChatLib.chat(`${prefix_vexo} &cFolder error: ${e}`);
-        return false;
     }
 
     try {
@@ -73,8 +75,9 @@ function downloadAndInstallUpdate(downloadUrl) {
         zipFile.close();
 
         FileLib.unzip(TEMP_ZIP_PATH, MODULE_DIR);
-        
+
         ChatLib.chat(`${prefix_vexo} &aUpdate successful! Use &6/ct reload&a.`);
+
         return true;
     } catch (e) {
         ChatLib.chat(`${prefix_vexo} &Error: ${e}`);

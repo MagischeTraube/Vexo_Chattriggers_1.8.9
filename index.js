@@ -20,12 +20,7 @@ import { GUICommand } from "./Features/gui"
 
 import { checkForUpdates } from "./utils/autoUpdate"
 
-const autoUpdateChecker = register("tick", () => {
-    if (config.AutoUpdate) {
-        let updateStatus = checkForUpdates()
-        if (updateStatus && config.AutoCTreload) {
-            ChatLib.command("ct reload", true)
-        }
-    }
-    autoUpdateChecker.unregister()
-})
+const UpdateChecker = register("tick", () => {
+    checkForUpdates()
+    UpdateChecker.unregister();
+});

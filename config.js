@@ -1,4 +1,4 @@
-import { checkForUpdates } from "./utils/autoUpdate";
+import { checkForUpdates, downloadAndInstallUpdate } from "./utils/autoUpdate";
 import {
     @ButtonProperty,@CheckboxProperty,
     Color,
@@ -92,9 +92,8 @@ const version = getVersion()
             //Log
             'Debug Messages',
             //Update
-            'Auto Update',
+            'Update',
             'Auto /ct reload',
-            'Manual Update',
             //////////////////////////////////////////////////
         ];
         return order.indexOf(a.attributes.name) - order.indexOf(b.attributes.name);
@@ -371,13 +370,22 @@ class Settings {
     DevMessages = false;
 
     // Update
-    @SwitchProperty({
-        name: "Auto Update",
-        description: "Automatically checks for updates and downloads the latest version",
+    @ButtonProperty({
+        name: "Update",
+        description: "Checks for updates and downloads the latest version",
         category: "Dev",
         subcategory: "Update",
+        placeholder: "Update",
     })
-    AutoUpdate = false;
+    ManualUpdate() {
+        let download_url = checkForUpdates()
+        if (download_url) {
+            downloadAndInstallUpdate(download_url)
+            if (config.AutoCTreload) {
+                ChatLib.command("ct reload", true)
+            }
+        }
+    };
 
     @SwitchProperty({
         name: "Auto /ct reload",
@@ -386,17 +394,6 @@ class Settings {
         subcategory: "Update",
     })
     AutoCTreload = false;
-
-    @ButtonProperty({
-        name: "Manual Update",
-        description: "Checks for updates and downloads the latest version",
-        category: "Dev",
-        subcategory: "Update",
-        placeholder: "Update",
-    })
-    ManualUpdate() {
-        checkForUpdates()
-    };
 
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
@@ -410,6 +407,7 @@ class Settings {
         this.addDependency("Move Healer Leaped GUI", "Pre4 Healer Leaped Alert");
         this.addDependency("Move Rag Axe Alert GUI", "Rag Axe Alert");
         this.addDependency("Move All Leaped GUI", "All Leaped");
+        this.addDependency("Move Weirder Tuba Timer GUI", "Weirder Tuba Timer");
         this.addDependency("Move M3 Timer GUI", "M3 Timer");
         this.addDependency("Move Pad Timer GUI", "Pad Timer");
         
@@ -420,8 +418,6 @@ class Settings {
         this.addDependency("Rewarp Coords", "Rewarp on Coords");
         
         // Dev
-        this.addDependency("Auto /ct reload", "Auto Update");
-
     }
 }
 
