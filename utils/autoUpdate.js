@@ -3,8 +3,7 @@ import { getVersion, prefix_vexo } from "./util";
 
 const MODULE_NAME = "vexo";
 const LOCAL_VERSION = getVersion()
-const GITHUB_REPO = "MagischeTraube/Vexo_Chattriggers_1.8.9";
-const API_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
+const API_URL = `https://api.github.com/repos/MagischeTraube/Vexo_Chattriggers_1.8.9/releases/latest`;
 const TEMP_DIR = `./config/ChatTriggers/modules/Vexo/updates`;
 const TEMP_ZIP_PATH = `${TEMP_DIR}/${MODULE_NAME}_update.zip`;
 const MODULE_DIR = `./config/ChatTriggers/modules/Vexo/`;
@@ -23,7 +22,14 @@ export function checkForUpdates() {
         if (!DOWNLOAD_URL) throw new Error("No download URL found in the release!");
         
         if (REMOTE_VERSION !== LOCAL_VERSION) {
-            let update_message = new Message(prefix_vexo + " &afound new version! ", new TextComponent("&c[Update-URL]").setClick("open_url", RELEASE_URL))
+            let update_message = new Message(
+                "&3-----------------------------------------------------\n" + 
+                prefix_vexo + " &afound new version! ", new TextComponent("&c[Update-URL]").setClick("open_url", RELEASE_URL), 
+                "\n&bPATCHNOTES:\n\n" + 
+                data.body.replace(/\r/g, "").replace("->", "  &a->").replace("<-", "  &c<-").replace("<>", "  &e<>") + 
+                "\n&3-----------------------------------------------------"
+            )
+            
             ChatLib.chat(update_message)
             return DOWNLOAD_URL;
         }
