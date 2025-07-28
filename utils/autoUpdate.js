@@ -12,7 +12,7 @@ const RELEASE_URL = "https://github.com/MagischeTraube/Vexo_Chattriggers_1.8.9/r
 
 
 export function checkForUpdates() {
-    request({
+    return request({
         url: API_URL,
         headers: { 'User-Agent': 'Mozilla/5.0' },
     }).then(response => {

@@ -12,7 +12,7 @@ import {
     @NumberProperty,
 } from '../Vigilance/index';
 
-import { getVersion } from "./utils/util";
+import { getVersion, prefix_vexo } from "./utils/util";
 
 const version = getVersion()
 
@@ -378,13 +378,15 @@ class Settings {
         placeholder: "Update",
     })
     ManualUpdate() {
-        let download_url = checkForUpdates()
-        if (download_url) {
-            downloadAndInstallUpdate(download_url)
-            if (config.AutoCTreload) {
-                ChatLib.command("ct reload", true)
+        checkForUpdates().then(download_url => {
+            if (download_url) {
+                downloadAndInstallUpdate(download_url)
+            } else {
+                ChatLib.chat(`${prefix_vexo} &aYou're already using the latest version.`);
             }
-        }
+        }).catch(error => {
+            ChatLib.chat(`${prefix_vexo} &cAn error occurred while checking for updates: ${error.message}`);
+        });
     };
 
     @SwitchProperty({
