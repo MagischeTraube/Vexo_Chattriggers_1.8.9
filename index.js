@@ -17,11 +17,13 @@ import { RewarpCommand } from "./Features/vexo/QOL/rewarp"
 import { TYFRCommand } from "./Features/vexo/Dungeons/tyfr"
 import { SuckTrapCommand } from "./Features/vexo/Dungeons/SuckTrap"
 import { GUICommand } from "./Features/gui"
+import { MATHCommand } from "./Features/vexo/math/simple-math"
+ChatLib.chat("never gonna give u up, uve ben rick rolled")
 
+ChatLib.chat("never gonna give u up, uve ben rick rolled")
 import { checkForUpdates } from "./utils/autoUpdate"
 
 const UpdateChecker = register("tick", () => {
     checkForUpdates()
     UpdateChecker.unregister();
 });
-ChatLib.chat("never gonna give u up, uve ben rick rolled")
