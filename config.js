@@ -295,49 +295,6 @@ class Settings {
     })
     rejoin = false;
 
-    // Rewarp
-    @SwitchProperty({
-        name: "Rewarp",
-        description: "Warps u to is and back to is and back to the dwarven mines",
-        category: "QOL",
-        subcategory: "Rewarp",
-    })
-    rewarp = false;
-
-    @TextProperty({
-        name: "Rewarp to",
-        description: "The location you want to rewarp to, put the warp command without the /",
-        category: "QOL",
-        subcategory: "Rewarp",
-        placeholder: "warp mines",
-    })
-    rewarpto = "warp mines";
-
-    @SwitchProperty({
-        name: "Rewarp monolith",
-        description: "rewarps after finding a monolith",
-        category: "QOL",
-        subcategory: "Rewarp",
-    })
-    rewarpmonolith = false;
-
-    @SwitchProperty({
-        name: "Rewarp on Coords",
-        description: "Not working Right Now",
-        category: "QOL",
-        subcategory: "Rewarp",
-    })
-    rewarpcoordstoggle = false;
-
-    @TextProperty({
-        name: "Rewarp Coords",
-        description: "Put the coords you want to rewarp to, format: x,y,z without spaces",
-        category: "QOL",
-        subcategory: "Rewarp",
-        placeholder: "0,0,0",
-    })
-    rewarpcoords = "0,0,0";
-
     ///////////////////////////////////////////////
 
     // Dev ////////////////////////////////////////
@@ -350,15 +307,6 @@ class Settings {
         subcategory: "Entity",
     })
     printEntity = false;
-
-    @SwitchProperty({
-        name: "Mob ESP",
-        description: "Highlights starred mobs with a box",
-        category: "Dev",
-        subcategory: "Entity",
-    })
-    StarESP = false;
-
     // Logs
     @SwitchProperty({
         name: "Debug Messages",
@@ -403,12 +351,6 @@ class Settings {
         this.addDependency("Move Weirder Tuba Timer GUI", "Weirder Tuba Timer");
         this.addDependency("Move M3 Timer GUI", "M3 Timer");
         this.addDependency("Move Pad Timer GUI", "Pad Timer");
-        
-        // QOL
-        this.addDependency("Rewarp to", "Rewarp");
-        this.addDependency("Rewarp monolith", "Rewarp");
-        this.addDependency("Rewarp on Coords", "Rewarp");
-        this.addDependency("Rewarp Coords", "Rewarp on Coords");
         
         // Dev
     }
