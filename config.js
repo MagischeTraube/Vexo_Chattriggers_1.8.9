@@ -36,7 +36,6 @@ const version = getVersion()
             //////////////////////////////////////////////////
 
             // QOL ///////////////////////////////////////////
-            'Rewarp',
             'Kicked',
             //////////////////////////////////////////////////
 
@@ -77,18 +76,11 @@ const version = getVersion()
             // QOL ///////////////////////////////////////////
             // Kicked
             'Auto Rejoin on Kick',
-            //Rewarp
-            'Rewarp',
-            'Rewarp to',
-            'Rewarp monolith',
-            'Rewarp on Coords',
-            'Rewarp Coords',
             //////////////////////////////////////////////////
 
             // Dev ///////////////////////////////////////////
             // Entity
             'Print Entitys',
-            'Mob ESP',
             //Log
             'Debug Messages',
             //Update
