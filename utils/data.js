@@ -36,10 +36,5 @@ export const data = new PogObject("vexo", {
         y: Renderer.screen.getHeight() / 2 + 10,
         scale: 1
     },
-
-    weirderTubaTimer: {
-        x: Renderer.screen.getWidth() / 2,
-        y: Renderer.screen.getHeight() / 2 + 10,
-        scale: 1
-    },
+    
 }, "data.json")

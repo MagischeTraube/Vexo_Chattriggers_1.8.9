@@ -10,7 +10,6 @@ import "./Features/vexo/QOL/rejoin"
 import "./Features/vexo/Dungeons/StopMageSheepRendering"
 import "./Features/vexo/Dungeons/healerLeapedpre4"
 import "./Features/vexo/Dungeons/ScoreMilestoneAlert"
-import "./Features/vexo/Dungeons/weirderTubaTimer"
 
 import { TYFRCommand } from "./Features/vexo/Dungeons/tyfr"
 import { SuckTrapCommand } from "./Features/vexo/Dungeons/SuckTrap"
